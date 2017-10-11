@@ -40,40 +40,18 @@ public class BankAccountTest {
 		assertEquals(5500.10, check, .01);
 	}
 
-	/*
-	@Test
-	public void assertThatNameReturnsItemNameOfShirt() {
-		Item underTest = new Item("shirt", 14.99, 1);
-		String check = underTest.getName();
-		assertEquals(check, "shirt");
-	}
 	
-
-	@Test
-	public void assertThatGetPriceReturns654Point35() {
-		Item underTest = new Item("test", 654.35, 5);
-		double check = underTest.getPrice();
-		assertEquals(654.35, check, .01);
-		//assertEquals(Double.doubleToLongBits(654.35), Double.doubleToLongBits(check));		
-		//Assert.assertEquals(0, Double.compareTo(expected, result));
-	}
-	
-	@Test
-	public void assertThatGetQuantityReturnsFive() {
-		Item underTest = new Item("test", 10.00, 5);
-		int check = underTest.getQuantity();
-		assertEquals(5, check);
-	}
-	
-	@Test
-	public void assertThatGetTotalItemsReturnsOne() {
 		
-		Order underTest = new Order();
-		underTest.addItem(new Item("shirt", 14.99, 1));
-		int check = underTest.getTotalItems();
-		assertEquals(1, check);
+	@Test
+	public void assertThatGetTotalBankDollarsReturns3000() {
+		
+		Bank underTest = new Bank();
+		underTest.addBankAccount(new BankAccount("1111", "Checking", 500.00));
+		underTest.addBankAccount(new BankAccount("2222", "Savings", 2500.00));
+		double check = underTest.getTotalBankDollars();
+		assertEquals(3000.00, check, .01);
 	}
-	
+	/*
 	@Test
 	public void assertThatGetTotalBoxesReturnsSeven() {
 		Order underTest = new Order();
