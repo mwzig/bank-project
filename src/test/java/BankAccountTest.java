@@ -13,6 +13,7 @@ public class BankAccountTest {
 		assertNotNull(underTest);
 	}
 	
+	
 	@Test
 	public void shouldBeAbleToCreateABankAccountWithData() {
 		// accountNum, type, balance passed on constructor
@@ -21,7 +22,15 @@ public class BankAccountTest {
 		assertEquals(5000.05, check, .01);
 	}
 	
-
+	@Test
+	public void assertThatAccountIsFound() {
+		// accountNum, type, balance passed on constructor
+		Bank underTest = new Bank();
+		underTest.addBankAccount(new BankAccount("1111", "Checking", 5000.05));
+		String check = underTest.getAccount("1111").getAccountNum();
+		assertEquals("1111", check);
+	}
+	
 	@Test
 	public void shouldBeAbleToWithDrawFunds() {
 		// accountNum, type, balance passed on constructor
@@ -39,9 +48,27 @@ public class BankAccountTest {
 		double check = underTest.getBalance();
 		assertEquals(5500.10, check, .01);
 	}
-
 	
+	@Test
+	public void assertThatAddingAccountsChangesTotalNumAccounts() {
 		
+		Bank underTest = new Bank();
+		underTest.addBankAccount(new BankAccount("1111", "Checking", 500.00));
+		underTest.addBankAccount(new BankAccount("2222", "Savings", 2500.00));
+		int check = underTest.getTotalNumOfAccounts();
+		assertEquals(2, check);
+	}
+	
+	@Test
+	public void assertThatRemovingAccountChangesTotalNumAccounts() {
+		Bank underTest = new Bank();
+		underTest.addBankAccount(new BankAccount("1111", "Checking", 500.00));
+		underTest.addBankAccount(new BankAccount("2222", "Savings", 2500.00));
+		underTest.closeBankAccount("1111");
+		int check = underTest.getTotalNumOfAccounts();
+		assertEquals(1, check);
+	}
+	
 	@Test
 	public void assertThatGetTotalBankDollarsReturns3000() {
 		
